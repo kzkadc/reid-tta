@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: &title Test-time Similarity Modification for Person Re-identification toward Temporal Distribution Shift
+message: If our work assists your research, please cite our paper.
+authors: &authors
+  - family-names: Kazuki
+    given-names: Adachi
+  - family-names: Shohei
+    given-names: Enomoto
+  - family-names: Taku
+    given-names: Sasaki
+  - family-names: Shin'ya
+    given-names: Yamaguchi
+preferred-citation:
+  type: conference-paper
+  authors: *authors
+  title: *title
+  year: 2024
+  collection-title: Proceedings of 2024 International Joint Conference on Neural Networks (IJCNN)
+  collection-type: proceedings
+  identifiers:
+    - description: IEEExplore
+      type: url
+      value: https://ieeexplore.ieee.org/document/10650113
+    - description: arXiv
+      type: url
+      value: &arxiv https://arxiv.org/abs/2403.14114
+    - description: DOI
+      type: doi
+      value: &doi 10.1109/IJCNN60899.2024.10650113
+  url: *arxiv
+  doi: *doi
