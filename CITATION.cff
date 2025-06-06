@@ -2,14 +2,14 @@ cff-version: 1.2.0
 title: &title Test-time Similarity Modification for Person Re-identification toward Temporal Distribution Shift
 message: If our work assists your research, please cite our paper.
 authors: &authors
-  - family-names: Kazuki
-    given-names: Adachi
-  - family-names: Shohei
-    given-names: Enomoto
-  - family-names: Taku
-    given-names: Sasaki
-  - family-names: Shin'ya
-    given-names: Yamaguchi
+  - family-names: Adachi
+    given-names: Kazuki
+  - family-names: Enomoto
+    given-names: Shohei
+  - family-names: Sasaki
+    given-names: Taku
+  - family-names: Yamaguchi
+    given-names: Shin'ya
 preferred-citation:
   type: conference-paper
   authors: *authors
