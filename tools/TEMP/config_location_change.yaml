@@ -1,0 +1,111 @@
+DATA_ROOT: "/dataset/"
+LOGS_ROOT: "../logs/"
+
+MODEL:
+  # architecture
+  backbone: "resnet50"
+  pooling: "gem"
+  embed_feat: 0
+  dropout: 0.
+
+  dsbn: True
+
+  sync_bn: True
+  samples_per_bn: 16
+
+  mean_net: False
+  alpha: 0.999
+
+  # pretraining
+  imagenet_pretrained: False
+  source_pretrained: "../logs/source_pretrain/market1501/checkpoint.pth"
+
+DATA:
+  height: 256
+  width: 128
+  norm_mean: [0.485, 0.456, 0.406]
+  norm_std: [0.229, 0.224, 0.225]
+
+  TRAIN:
+    # augmentation
+    is_autoaug: False
+
+    is_flip: False
+    flip_prob: 0.0
+
+    is_pad: False
+    pad_size: 10
+
+    is_blur: False
+    blur_prob: 0.0
+
+    is_erase: False
+    erase_prob: 0.0
+
+    # dual augmentation for MMT
+    is_mutual_transform: False
+    mutual_times: 2
+
+TRAIN:
+  seed: 1
+  deterministic: True
+  # mixed precision training for PyTorch>=1.6
+  amp: False
+
+  # datasets
+  datasets: { "personx": "trainval" }
+  unsup_dataset_indexes: null
+  gallery_sampling: 30000
+  update_gallery: True
+
+  LOADER:
+    samples_per_gpu: 16
+    workers_per_gpu: 2
+
+  LOSS:
+    losses: { "entropy": 1. }
+    k: 50
+    metric: "cos"
+    selection: "top-k"
+    on_gpu: True
+
+  ENGINE:
+    train_mode: False
+    lam_fgt: 0.0
+    metric_cfg:
+      dist_metric: "euclidean"
+      norm_feat: True
+      dist_cuda: True
+
+  # optim
+  OPTIM:
+    optim: "Adam"
+    param: "bn"
+    config:
+      lr: 0.00035
+      #momentum: 0.9
+      weight_decay: 0.000
+
+TEST:
+  # datasets
+  datasets: ["msmt17"]
+  CORRUPTION:
+    types: [null]
+    factors: [0]
+
+  # data loader
+  LOADER:
+    samples_per_gpu: 16
+    workers_per_gpu: 2
+
+  # ranking setting
+  dist_metric: "euclidean"
+  norm_feat: True
+  dist_cuda: True
+
+  # post processing
+  rerank: False
+  search_type: 0 # 0,1,2 for GPU, 3 for CPU (work for faiss)
+  k1: 20
+  k2: 6
+  lambda_value: 0.3
