@@ -121,18 +121,15 @@ openunreid/version.py
 work_dirs/
 
 # Pytorch
-*.pth
 *.py~
 *.sh~
 
 # Project specific
-logs/*
 log
 tests/*
 
 *.ipynb
 
-config_*.yaml
 *.out
 *.img
 exp_batches/
