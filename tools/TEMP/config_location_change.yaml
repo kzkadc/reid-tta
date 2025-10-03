@@ -71,7 +71,7 @@ TRAIN:
 
   ENGINE:
     train_mode: False
-    lam_fgt: 0.0
+    lam_fgt: 0.0001
     metric_cfg:
       dist_metric: "euclidean"
       norm_feat: True
