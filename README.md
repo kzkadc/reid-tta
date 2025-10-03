@@ -27,6 +27,8 @@ $ docker run -it --rm -w $(pwd) -v $(pwd):$(pwd) --gpus device=0 -e GPUS=1 -e ME
 $ docker run -it --rm -w $(pwd) -v $(pwd):$(pwd) --gpus device=0 -e GPUS=1 -e RESUME="../logs/source_pretrain/market1501/checkpoint.pth" -e CONFIG="../logs/source_pretrain/market1501/config.yaml" -e ARGS="TEST.LOADER.workers_per_gpu 1" reid-tta bash exec_dist_test.sh
 ```
 
+- Pre-trained source models are available in [logs/source_pretrain](/logs/source_pretrain).
+
 ## 2. Test-time adaptation
 - Our method is implemented upon [OpenUnReID](https://github.com/open-mmlab/OpenUnReID).
 - Edit `tools/TEMP/config.yaml` appropriately, e.g., `DATA_ROOT`, `LOGS_ROOT`, `TRAIN/datasets`, etc.
